@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	
+	<class name="com.itheima.domain.Visit" table="sale_visit">
+		<id name="visit_id" column="visit_id">
+			<generator class="native"/>
+		</id>
+		
+		<property name="visit_time" column="visit_time"/>
+		<property name="visit_addr" column="visit_addr"/>
+		<property name="visit_detail" column="visit_detail"/>
+		<property name="visit_nexttime" column="visit_nexttime"/>
+	
+		
+		<!-- name：Javabean的属性名称	class：一方类的全路径 	column：外键的名称-->
+		<many-to-one name="customer" class="com.itheima.domain.Customer" column="visit_cust_id" ></many-to-one>
+		<many-to-one name="user" class="com.itheima.domain.User" column="visit_user_id" ></many-to-one>
+		<many-to-one name="linkman" class="com.itheima.domain.Linkman" column="visit_lkm_id" ></many-to-one>
+		</class>
+	
+</hibernate-mapping>    

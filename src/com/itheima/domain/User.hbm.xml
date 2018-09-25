@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<!-- 配置类和表结构映射  -->
+	<class name="com.itheima.domain.User" table="sys_user">
+		<!-- 配置Id -->
+		<id name="user_id" column="user_id">
+			<!-- 主键生成策略 -->
+			<generator class="native"/>
+		</id>
+		<!-- 配置其他属性  -->
+		<property name="user_name" column="user_name"/>
+		<property name="user_code" column="user_code"/>
+		<property name="user_password" column="user_password"/>
+		<property name="user_state" column="user_state"/>
+		
+		
+		<!-- 放弃对外键的维护 -->
+	    <set name="visits" inverse="true">
+	    	<key column="visit_user_id"></key>
+	    	<one-to-many class="com.itheima.domain.Visit"/>
+	    </set>
+	</class>
+	
+	
+</hibernate-mapping>
